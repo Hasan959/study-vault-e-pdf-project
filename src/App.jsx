@@ -1,4 +1,5 @@
-import { useState } from 'react'
+
+import AppRoutes from './routes/AppRoutes'
 
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <>
-      <h1 className='' >hasan mahmud</h1>
+      <AppRoutes/>
     </>
   )
 }
