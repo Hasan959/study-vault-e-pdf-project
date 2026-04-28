@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { NavLink, Link } from "react-router"
 import { HiOutlineMenuAlt3, HiX } from "react-icons/hi"
 
-const NAV_LINKS = [
+const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Books", to: "/books" },
@@ -15,36 +15,42 @@ const NAV_LINKS = [
 /* =========================
    NAV LINK COMPONENT
 ========================= */
-function DesktopNavLink({ to, label, onClick }) {
+
+const DesktopNavLink =({to,label,onClick}) => {
   return (
     <NavLink
-      to={to}
-      end={to === "/"}
-      onClick={onClick}
-      className={({ isActive }) =>
-        `relative text-[14px] font-medium transition-colors duration-200 group
-        ${isActive ? "text-[var(--text)]" : "text-[var(--text2)] hover:text-[var(--text)]"}`
-      }
+        to = {to}
+        end = {to === "/" }
+        onClick = {onClick}
+        className ={({isActive}) => 
+           `relative text-[16px] font-medium transition-colors duration-200 group 
+            ${isActive ? " text-[var(--text)] " :" text-[var-(--text2)] hover:text-[var-(--text)]"}`
+        }
     >
-      {({ isActive }) => (
-        <>
-          {label}
+       {({isActive}) =>(
+         <> 
+            {label}
 
-          <span
-            className={[
-              "absolute -bottom-0.5 left-0 right-0 h-[1.5px] rounded-full",
-              "bg-gradient-to-r from-navy-500 to-violet-500",
-              "transition-transform duration-300 origin-left",
-              isActive
-                ? "scale-x-100"
-                : "scale-x-0 group-hover:scale-x-100",
-            ].join(" ")}
-          />
-        </>
-      )}
+            <span
+  className={`absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full
+  bg-gradient-to-r from-indigo-400 via-fuchsia-500 to-orange-500
+  transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+  origin-left
+  ${
+    isActive
+      ? "scale-x-100 opacity-100"
+      : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100"
+  }
+  blur-[0.3px] shadow-[0_0_12px_rgba(168,85,247,0.6)]`}
+ />
+
+            
+         </>
+       ) }
+     
     </NavLink>
   )
-}
+} 
 
 /* =========================
    DARK MODE TOGGLE
@@ -68,13 +74,13 @@ function ThemeToggle() {
    NAVBAR
 ========================= */
 const Navbar = () => {
+  
   const [open, setOpen] = useState(false)
-
   const closeMenu = () => setOpen(false)
 
   return (
     <header className="w-full border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-xl fixed top-0 left-0 z-50">
-      <div className="max-w-[1160px] mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo */}
         <Link to="/" className="font-bold text-[var(--text)]">
@@ -82,19 +88,22 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-9">
-          {NAV_LINKS.map((l) => (
+        <nav className="hidden lg:flex items-center gap-9">
+          {navLinks.map((l) => (
             <DesktopNavLink key={l.to} {...l} />
           ))}
         </nav>
 
-        {/* Right Controls */}
-        <div className="flex items-center gap-3">
+        {/* Tab view Nav  */}
+        
+
+        {/* Right Controls for mobile+tab */}
+        <div className=" flex items-center gap-3">
           <ThemeToggle />
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-[var(--text)]"
+            className="lg:hidden text-[var(--text)]"
             onClick={() => setOpen(true)}
           >
             <HiOutlineMenuAlt3 size={24} />
@@ -116,7 +125,7 @@ const Navbar = () => {
             <HiX size={26} />
           </button>
 
-          {NAV_LINKS.map((l) => (
+          {navLinks.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
@@ -131,7 +140,9 @@ const Navbar = () => {
           ))}
         </div>
       )}
+      
     </header>
+    
   )
 }
 
