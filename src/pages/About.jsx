@@ -10,6 +10,8 @@ const About = () => {
       <div>hdhshdhs</div>
       <div>hdhshdhs</div>
       <div>hdhshdhs</div>
+      <div>hdhshdhs</div>
+      <div>hdhshdhs</div>
     </div>
      
   )
