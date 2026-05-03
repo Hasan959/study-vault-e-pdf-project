@@ -13,14 +13,16 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 
+import { HiCheckCircle } from "react-icons/hi2";
 import { HiArrowRight } from "react-icons/hi2";
+import { Send, Loader2 } from "lucide-react";
 
 import Button from "../components/ui/Button";
 import SectionChip from "../components/ui/SectionChip";
 
 /* ---------------- DATA ---------------- */
 
-const CONTACT_INFO = [
+const contactInfo = [
   {
     Icon: HiOutlineMail,
     label: "Email",
@@ -85,6 +87,13 @@ const Contact = () => {
   /* submit handler */
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { name, email, message } = form;
+
+    // validation check
+    if (!name || !email || !message) {
+      alert("Please fill out this fields");
+      return;
+    }
     setLoading(true);
 
     setTimeout(() => {
@@ -102,7 +111,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[var(--bg2)]">
+    <section className="py-24 bg-[var(--bg2)]">
       <div className="max-w-[1160px] mx-auto px-6">
         {/* ================= HEADER ================= */}
         <div className="text-center mb-14">
@@ -134,7 +143,7 @@ const Contact = () => {
             </a>
 
             {/* Contact Info */}
-            {CONTACT_INFO.map(({ Icon, label, value }) => (
+            {contactInfo.map(({ Icon, label, value }) => (
               <div
                 key={label}
                 className="flex items-center gap-4 p-4 rounded-xl glass"
@@ -177,8 +186,10 @@ const Contact = () => {
           <div className="md:col-span-3 p-8 rounded-2xl bg-white/5 border border-white/10">
             {/* SUCCESS STATE */}
             {sent ? (
-              <div className="text-center py-10">
-                <div className="text-5xl mb-3">✅</div>
+              <div className="text-center flex flex-col items-center  py-10">
+                <div className="text-green-500 justify-center  text-5xl mb-3">
+                  <HiCheckCircle />
+                </div>
                 <h3 className="text-xl font-bold text-[var(--text)]">
                   Message Sent
                 </h3>
@@ -188,6 +199,7 @@ const Contact = () => {
               /* FORM */
               <form onSubmit={handleSubmit} className="space-y-3">
                 <input
+                  required
                   name="name"
                   placeholder="Your Name"
                   className="form-field"
@@ -197,6 +209,8 @@ const Contact = () => {
 
                 <input
                   name="email"
+                  type="email"
+                  required
                   placeholder="Your Email"
                   className="form-field"
                   value={form.email}
@@ -204,16 +218,27 @@ const Contact = () => {
                 />
 
                 <textarea
+                  
                   name="message"
                   placeholder="Your Message"
                   rows={5}
-                  className="form-field"
+                  className="form-field resize-none "
                   value={form.message}
                   onChange={handleChange}
                 />
 
                 <Button type="submit" disabled={loading}>
-                  {loading ? "⏳ Sending..." : "🚀 Send Message"}
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Send Message
+                    </>
+                  )}
                 </Button>
               </form>
             )}

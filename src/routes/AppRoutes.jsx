@@ -8,7 +8,7 @@ import Books from '../pages/Books';
 import Contact from '../pages/Contact';
 import WriterZone from '../pages/WriterZone';
 import GenesisEdu from '../pages/GenesisEdu';
-import { Articles } from '../pages/Articles';
+import Articles from '../pages/Articles';
 
 const AppRoutes = () => {
   return (
