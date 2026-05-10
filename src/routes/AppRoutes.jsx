@@ -10,6 +10,7 @@ import WriterZone from '../pages/WriterZone';
 import LoginRegister from '../pages/LoginRegister';
 
 import Articles from '../pages/Articles';
+import NewRegister from '../pages/NewRegister';
 
 const AppRoutes = () => {
   return (
@@ -25,7 +26,7 @@ const AppRoutes = () => {
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/writerzone' element={ <WriterZone/>}/>
       <Route path='/auth' element={<LoginRegister/>}/>
-      
+      <Route path='/newregister' element={<NewRegister/>}/>
       </Route>
     </Routes>
   );

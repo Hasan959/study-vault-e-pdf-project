@@ -13,6 +13,7 @@ const navLinks = [
   { label: "Contact", to: "/contact" },
   { label: "Writer Zone", to: "/writerzone" },
   { label: "Login/Register", to: "/auth" },
+  
 ];
 
 /* =========================
