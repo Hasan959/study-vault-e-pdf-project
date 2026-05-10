@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router";
 import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 import { FiExternalLink } from "react-icons/fi";
 import { useTheme } from "../context/ThemeContext";
+import Button from "./ui/Button";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -11,7 +12,7 @@ const navLinks = [
   { label: "Articles", to: "/articles" },
   { label: "Contact", to: "/contact" },
   { label: "Writer Zone", to: "/writerzone" },
-  { label: "GenesisEdu", to: "/genesisedu" },
+  { label: "Login/Register", to: "/auth" },
 ];
 
 /* =========================
@@ -31,19 +32,35 @@ const DesktopNavLink = ({ to, label, onClick }) => {
     >
       {({ isActive }) => (
         <>
-          {label === "Writer Zone" ? (
-            <span className="writerZone flex items-center gap-1 px-3 py-1 rounded-full  ">
-              {label}
-              <FiExternalLink className="text-[12px]" />
-            </span>
-          ) : label === "GenesisEdu" ? (
-            <span className="flex items-center gap-1">
-              {label}
-              <FiExternalLink className="text-[12px] opacity-70 group-hover:opacity-100 transition" />
-            </span>
-          ) : (
-            label
-          )}
+           {label === "Writer Zone" ? (
+      <span className="writerZone flex items-center gap-1 px-3 py-1 rounded-full">
+        {label}
+        <FiExternalLink className="text-[12px]" />
+      </span>
+    ) : label === "Login/Register" ? (
+      
+      /* 🔥 AUTH BUTTON WITH FULL BORDER EFFECT */
+      <span className="relative group inline-flex">
+        
+        {/* glowing border */}
+        <span className="
+          absolute -inset-[2px] rounded-xl
+          bg-gradient-to-r from-indigo-400 via-fuchsia-500 to-orange-500
+          opacity-0 group-hover:opacity-100
+          blur-[2px]
+          transition-all duration-500
+        " />
+
+        <Button variant="auth">
+          {label}
+          <FiExternalLink className="text-[13px]" />
+        </Button>
+
+      </span>
+
+    ) : (
+      label
+    )}
 
           <span
             className={`absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full

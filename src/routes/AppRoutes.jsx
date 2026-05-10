@@ -2,12 +2,13 @@
 import { Route, Routes } from 'react-router'
 import MainLayout from '../layouts/MainLayout'
 import Home from '../pages/Home'
-import Footer from '../components/Footer'
+// import Footer from '../components/Footer'
 import About from '../pages/About';
 import Books from '../pages/Books';
 import Contact from '../pages/Contact';
 import WriterZone from '../pages/WriterZone';
-import GenesisEdu from '../pages/GenesisEdu';
+import LoginRegister from '../pages/LoginRegister';
+
 import Articles from '../pages/Articles';
 
 const AppRoutes = () => {
@@ -23,7 +24,8 @@ const AppRoutes = () => {
       <Route path='/books' element={<Books/>}/>
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/writerzone' element={ <WriterZone/>}/>
-      <Route path='/genesisedu' element={< GenesisEdu/>}/>
+      <Route path='/auth' element={<LoginRegister/>}/>
+      
       </Route>
     </Routes>
   );
