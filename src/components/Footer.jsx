@@ -1,14 +1,30 @@
 import { BOOKS } from "../data/books";
 import { HiArrowUp, HiOutlineMail } from "react-icons/hi";
 
+import { Link } from "react-router";
+
+// React Icons (Social)
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaYoutube,
+  FaLinkedinIn,
+} from "react-icons/fa";
+
 /* ---------- DATA ---------- */
-const NAV_LINKS = ["Home", "About", "Books", "Articles", "Contact"];
+const NAV_LINKS = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Books", path: "/books" },
+  { label: "Articles", path: "/articles" },
+  { label: "Contact", path: "/contact" },
+];
 
 const SOCIALS = [
-  { label: "Facebook", emoji: "f", href: "#" },
-  { label: "Twitter/X", emoji: "𝕏", href: "#" },
-  { label: "YouTube", emoji: "▶", href: "#" },
-  { label: "LinkedIn", emoji: "in", href: "#" },
+  { label: "Facebook", icon: FaFacebookF, href: "#" },
+  { label: "Twitter/X", icon: FaTwitter, href: "#" },
+  { label: "YouTube", icon: FaYoutube, href: "#" },
+  { label: "LinkedIn", icon: FaLinkedinIn, href: "#" },
 ];
 
 /* ---------- COMPONENT ---------- */
@@ -17,20 +33,16 @@ const Footer = () => {
     <footer
       className="relative pt-20 pb-10 overflow-hidden"
       style={{
-        /* 🔥 FIX: softer gradient for light mode balance */
-        background:
-          "linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%)",
+        background: "linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%)",
         borderTop: "1px solid var(--border)",
       }}
     >
-      {/* SOFT GLOW (balanced, not too blue) */}
+      {/* Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[450px] h-[180px] bg-black/5 blur-[100px] dark:bg-navy-500/15" />
 
       <div className="max-w-[1160px] mx-auto px-6 relative">
-
         {/* ---------- TOP GRID ---------- */}
         <div className="grid md:grid-cols-4 gap-12 pb-12 border-b border-[var(--border)]">
-
           {/* BRAND */}
           <div className="md:col-span-2">
             <h2 className="text-xl font-bold text-[var(--text)]">
@@ -46,21 +58,25 @@ const Footer = () => {
               Bengali family through books and education.
             </p>
 
-            {/* SOCIAL */}
+            {/* SOCIALS */}
             <div className="flex gap-3 mt-6">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  className="w-10 h-10 flex items-center justify-center rounded-xl
-                             transition-all duration-300
-                             bg-[var(--surface)] border border-[var(--border)]
-                             text-[var(--text2)]
-                             hover:-translate-y-1 hover:text-[var(--text)]"
-                >
-                  {s.emoji}
-                </a>
-              ))}
+              {SOCIALS.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    aria-label={s.label}
+                    className="w-10 h-10 flex items-center justify-center rounded-xl
+                               bg-[var(--surface)] border border-[var(--border)]
+                               text-[var(--text2)]
+                               transition-all duration-300
+                               hover:-translate-y-1 hover:text-[var(--text)]"
+                  >
+                    <Icon size={16} />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -72,13 +88,13 @@ const Footer = () => {
 
             <div className="flex flex-col gap-3">
               {NAV_LINKS.map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
+                <Link
+                  key={link.label}
+                  to={link.path}
                   className="text-sm text-[var(--text2)] hover:text-[var(--text)] transition"
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>
@@ -119,8 +135,7 @@ const Footer = () => {
             <span
               key={b.id}
               className="text-xs text-[var(--text3)] border border-[var(--border)]
-                         px-3 py-1 rounded-full transition
-                         hover:text-[var(--text)]"
+                         px-3 py-1 rounded-full hover:text-[var(--text)] transition"
             >
               {b.titleEn}
             </span>
@@ -129,15 +144,12 @@ const Footer = () => {
 
         {/* ---------- BOTTOM ---------- */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-[var(--border)]">
-
           <p className="text-xs text-[var(--text3)]">
             © {new Date().getFullYear()} All rights reserved.
           </p>
 
           <div className="flex items-center gap-4">
-            <p className="text-xs text-[var(--text3)]">
-              Crafted with care ✨
-            </p>
+            <p className="text-xs text-[var(--text3)]">Crafted with care ✨</p>
 
             <a
               href="#home"
@@ -148,9 +160,7 @@ const Footer = () => {
               <HiArrowUp className="text-[var(--text2)]" />
             </a>
           </div>
-
         </div>
-
       </div>
     </footer>
   );

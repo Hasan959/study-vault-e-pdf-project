@@ -1,3 +1,4 @@
+import mentalBook from "../data/pdfbook/mental-book.pdf";
 export const BOOKS = [
   {
     id: 1,
@@ -14,7 +15,7 @@ export const BOOKS = [
       'A comprehensive guide to mental wellness, stress management, and building psychological resilience for modern life — drawing from clinical psychiatry and mindfulness research.',
     fullDesc:
       'This landmark book bridges Eastern wisdom and Western clinical psychiatry to offer a complete roadmap for mental wellness. Dr. Sohan draws on 12 years of patient consultations to address anxiety, depression, sleep disorders, and burnout with compassion and scientific rigor.\n\nFrom cognitive restructuring techniques to daily mindfulness rituals, every chapter contains actionable strategies validated by research. Included are assessments, journaling templates, and 30-day habit plans.',
-    previewUrl: 'https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-sample.pdf',
+    previewUrl: mentalBook,
   },
   {
     id: 2,
@@ -48,7 +49,7 @@ export const BOOKS = [
       'An intimate, beautifully written memoir exploring the human moments behind medicine — stories of courage, loss, healing, and the invisible bond between doctor and patient.',
     fullDesc:
       'Written with rare honesty and literary grace, this memoir invites readers into the wards and consulting rooms where the most profound human dramas unfold. Dr. Sohan writes about his first patient death, the family that changed his understanding of poverty and illness, and the colleague who taught him that medicine is, at its heart, a practice of love.\n\nThis book has moved readers to tears and inspired a generation of medical students across Bangladesh.',
-    previewUrl: 'https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-sample.pdf',
+    previewUrl: mentalBook,
   },
   {
     id: 4,
@@ -65,7 +66,7 @@ export const BOOKS = [
       'A pediatrician-approved guide for parents on optimal nutrition, milestone tracking, cognitive development, and raising healthy, resilient children from birth to adolescence.',
     fullDesc:
       'Every parent deserves a trusted medical guide — and this book is exactly that. Covering breastfeeding, weaning foods, micronutrient needs, sleep science, motor milestones, language development, and managing childhood illness with confidence.\n\nDr. Sohan combines the latest pediatric research with practical, affordable advice tailored to Bangladeshi families. Charts, tables, and monthly checklists are included.',
-    previewUrl: 'https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-sample.pdf',
+    previewUrl: mentalBook,
   },
   {
     id: 5,
@@ -82,7 +83,7 @@ export const BOOKS = [
       'An exploration of how the body heals — from immune response to neuroplasticity — and how patients can actively accelerate their own recovery through evidence-based practices.',
     fullDesc:
       "The body is humanity's most sophisticated healing machine — and most of us know almost nothing about how it works. Dr. Sohan translates cutting-edge immunology, epigenetics, and neuroscience into a practical guide for patients and wellness-seekers alike.\n\nDiscover how sleep, nutrition, movement, social connection, and purpose all activate the body's healing pathways. Includes protocols for post-surgical recovery, chronic illness management, and immune optimization.",
-    previewUrl: 'https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-sample.pdf',
+    previewUrl: mentalBook,
   },
   {
     id: 6,
@@ -99,7 +100,7 @@ export const BOOKS = [
       'A preventive medicine manifesto for the 21st century — 40 habits your body needs but no doctor has time to explain in a 10-minute consultation.',
     fullDesc:
       "What if you could prevent 80% of chronic diseases with lifestyle alone? The science says you can — and Dr. Sohan's most practical book shows you exactly how.\n\nForty chapters, forty habits: morning light, cold exposure, time-restricted eating, zone-2 cardio, gratitude practices, digital fasting, and more. Each is explained in plain language with a simple implementation guide. The most-gifted book in Dr. Sohan's catalogue.",
-    previewUrl: 'https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-sample.pdf',
+    previewUrl: mentalBook,
   },
 ]
 

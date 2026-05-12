@@ -44,51 +44,85 @@ export default function Home() {
 
       {/* 🔵 GLOW ORBS */}
       <div className="absolute top-10 left-10 w-72 h-72 bg-indigo-500/20 blur-3xl rounded-full animate-float" />
+
       <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full animate-float delay-300" />
 
       <div className="max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-12 items-center z-10">
 
         {/* LEFT */}
-        <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold text-[var(--text)] leading-tight">
+        <div data-aos="fade-right">
+
+          <h1
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className="text-5xl md:text-7xl font-bold text-[var(--text)] leading-tight"
+          >
             Healing Through <br />
+
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-500 to-cyan-400 animate-shimmer">
               Medicine & Words
             </span>
+
           </h1>
 
-          <p className="mt-6 text-[var(--text2)] max-w-[480px]">
+          <p
+            data-aos="fade-up"
+            data-aos-delay="400"
+            className="mt-6 text-[var(--text2)] max-w-[480px]"
+          >
             A journey of knowledge, healing and transformation through science and storytelling.
           </p>
 
-          <div className="flex gap-4 mt-6">
+          <div
+            data-aos="zoom-in"
+            data-aos-delay="600"
+            className="flex gap-4 mt-6"
+          >
+
             <Button>
               <HiOutlineBookOpen /> Explore Books
             </Button>
+
             <Button variant="ghost">
               <HiOutlineMail /> Contact <HiArrowRight />
             </Button>
+
           </div>
 
           {/* STATS */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">
+
             {STATS.map((s, i) => (
+
               <div
                 key={s.label}
-                className="bg-white/5 border border-white/10 rounded-xl p-4 text-center backdrop-blur animate-slide-up"
-                style={{ animationDelay: `${i * 0.1}s` }}
+                data-aos="fade-up"
+                data-aos-delay={i * 200}
+                className="bg-white/5 border border-white/10 rounded-xl p-4 text-center backdrop-blur"
               >
+
                 <h3 className="text-xl font-bold text-[var(--text)]">
                   {s.value}
                 </h3>
-                <p className="text-xs text-[var(--text2)]">{s.label}</p>
+
+                <p className="text-xs text-[var(--text2)]">
+                  {s.label}
+                </p>
+
               </div>
+
             ))}
+
           </div>
+
         </div>
 
         {/* RIGHT */}
-        <div className="relative flex justify-center items-center">
+        <div
+          data-aos="fade-left"
+          data-aos-delay="300"
+          className="relative flex justify-center items-center"
+        >
 
           {/* ORBIT RINGS */}
           <div className="orbit-ring w-[420px] h-[420px]" />
@@ -98,28 +132,54 @@ export default function Home() {
           <div className="orbit-dot" />
 
           {/* IMAGE */}
-          <div className="animate-float z-10">
+          <div
+            data-aos="zoom-in"
+            data-aos-delay="500"
+            className="animate-float z-10"
+          >
+
             <img
               src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=80"
               className="w-[280px] md:w-[340px] rounded-3xl border border-white/10 shadow-2xl"
               alt="doctor"
             />
+
           </div>
 
           {/* RATING */}
-          <div className="floating-card top-10 right-0">
+          <div
+            data-aos="fade-down"
+            data-aos-delay="700"
+            className="floating-card top-10 right-0"
+          >
+
             <p className="font-bold">4.8 ★</p>
-            <p className="text-xs opacity-70">Reader Rating</p>
+
+            <p className="text-xs opacity-70">
+              Reader Rating
+            </p>
+
           </div>
 
           {/* BOOKS */}
-          <div className="floating-card bottom-10 left-0 ">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="900"
+            className="floating-card bottom-10 left-0"
+          >
+
             <p className="font-bold">40K+</p>
-            <p className="text-xs opacity-70">Books Sold</p>
+
+            <p className="text-xs opacity-70">
+              Books Sold
+            </p>
+
           </div>
 
         </div>
+
       </div>
+
     </section>
   );
 }
