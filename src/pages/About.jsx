@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import {
   HiOutlineMapPin,
@@ -12,12 +15,27 @@ import Button from "../components/ui/Button";
 import SectionChip from "../components/ui/SectionChip";
 
 export default function About() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1200,
+      once: true,
+      easing: "ease-in-out",
+    });
+  }, []);
+
   return (
-    <section id="about" className="py-28" style={{ background: "var(--bg2)" }}>
+    <section
+      id="about"
+      className="py-28 overflow-hidden"
+      style={{ background: "var(--bg2)" }}
+    >
       <div className="max-w-[1160px] mx-auto px-6">
 
         {/* HEADER */}
-        <div className="text-center mb-14">
+        <div
+          className="text-center mb-14"
+          data-aos="fade-up"
+        >
           <SectionChip>About The Author</SectionChip>
 
           <h2 className="font-sora font-extrabold mt-4 text-[clamp(28px,4vw,48px)] text-[var(--text)]">
@@ -37,6 +55,7 @@ export default function About() {
 
             {/* IMAGE */}
             <div
+              data-aos="fade-right"
               className="relative animate-pulse-glow rounded-3xl p-[3px]
                          bg-gradient-to-br from-navy-500 via-violet-500 to-teal-400"
             >
@@ -51,6 +70,7 @@ export default function About() {
                 <div className="font-sora font-extrabold text-[26px] text-[var(--text)] text-center leading-none">
                   12+
                 </div>
+
                 <div className="text-[12px] text-[var(--text2)] text-center">
                   Years Experience
                 </div>
@@ -58,8 +78,11 @@ export default function About() {
             </div>
 
             {/* CONTACT INFO */}
-            <div className="mt-14 space-y-3 w-full max-w-[360px]">
-
+            <div
+              className="mt-14 space-y-3 w-full max-w-[360px]"
+              data-aos="fade-right"
+              data-aos-delay="200"
+            >
               {[
                 {
                   icon: HiOutlineMapPin,
@@ -80,27 +103,30 @@ export default function About() {
                   <div
                     key={item.text}
                     className="flex items-center gap-3 px-4 py-3 rounded-xl
-                               bg-white/5 backdrop-blur-md border border-white/10"
+                               bg-white/5 backdrop-blur-md border border-white/10
+                               hover:border-violet-400/40 transition-all duration-300"
                   >
                     <Icon className="w-5 h-5 text-violet-300" />
+
                     <span className="text-sm text-[var(--text2)]">
                       {item.text}
                     </span>
                   </div>
                 );
               })}
-
             </div>
 
             {/* JOURNEY */}
-            <div className="mt-14 w-full max-w-[360px]">
-
+            <div
+              className="mt-14 w-full max-w-[360px]"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <h3 className="text-[var(--text)] font-sora font-bold text-lg mb-6">
                 Journey
               </h3>
 
               <div className="space-y-6">
-
                 {[
                   {
                     year: "2024",
@@ -123,11 +149,17 @@ export default function About() {
                     desc: "Debut literary publication released.",
                   },
                 ].map((item, i) => (
-                  <div key={i} className="flex gap-4 group">
+                  <div
+                    key={i}
+                    className="flex gap-4 group"
+                    data-aos="fade-up"
+                    data-aos-delay={i * 120}
+                  >
 
                     {/* DOT + LINE */}
                     <div className="flex flex-col items-center">
                       <div className="w-2.5 h-2.5 rounded-full bg-violet-400 mt-1.5 group-hover:scale-125 transition-transform" />
+
                       {i < 3 && (
                         <div className="w-px flex-1 bg-white/10 mt-2" />
                       )}
@@ -150,14 +182,12 @@ export default function About() {
 
                   </div>
                 ))}
-
               </div>
             </div>
-
           </div>
 
           {/* ================= RIGHT SIDE ================= */}
-          <div>
+          <div data-aos="fade-left">
 
             {/* STORY */}
             <h3 className="font-sora text-[22px] font-bold text-[var(--text)]">
@@ -165,18 +195,17 @@ export default function About() {
             </h3>
 
             <p className="mt-4 font-lora text-[15px] leading-[1.9] text-[var(--text2)]">
-              I began my career in clinical medicine, treating thousands of patients
-              across different hospitals and communities.
+              I began my career in clinical medicine, treating thousands of
+              patients across different hospitals and communities.
             </p>
 
             <p className="mt-4 font-lora text-[15px] leading-[1.9] text-[var(--text2)]">
-              Over time, I realized that real impact comes not only from treatment,
-              but from education and awareness.
+              Over time, I realized that real impact comes not only from
+              treatment, but from education and awareness.
             </p>
 
             {/* CARDS */}
             <div className="mt-8 grid grid-cols-2 gap-3">
-
               {[
                 {
                   icon: HiOutlineAcademicCap,
@@ -198,30 +227,37 @@ export default function About() {
                   title: "Bangladesh",
                   desc: "Based Location",
                 },
-              ].map((item) => {
+              ].map((item, index) => {
                 const Icon = item.icon;
 
                 return (
                   <div
                     key={item.title}
-                    className="glass rounded-2xl px-4 py-4"
+                    data-aos="zoom-in"
+                    data-aos-delay={index * 120}
+                    className="glass rounded-2xl px-4 py-4
+                               hover:-translate-y-1 transition-all duration-300"
                   >
                     <Icon className="w-5 h-5 text-violet-300" />
+
                     <div className="font-semibold text-sm mt-2 text-[var(--text)]">
                       {item.title}
                     </div>
+
                     <div className="text-[11px] text-[var(--text2)]">
                       {item.desc}
                     </div>
                   </div>
                 );
               })}
-
             </div>
 
             {/* CTA */}
-            <div className="flex gap-4 mt-8 flex-wrap">
-
+            <div
+              className="flex gap-4 mt-8 flex-wrap"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
               <a href="#books">
                 <Button size="md">
                   <HiOutlineBookOpen className="w-4 h-4" />
@@ -231,14 +267,13 @@ export default function About() {
 
               <a href="#contact">
                 <Button variant="ghost" size="md">
-                  Contact Me <HiArrowRight className="w-4 h-4" />
+                  Contact Me
+                  <HiArrowRight className="w-4 h-4" />
                 </Button>
               </a>
-
             </div>
 
           </div>
-
         </div>
       </div>
     </section>
