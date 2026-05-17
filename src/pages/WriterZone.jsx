@@ -9,6 +9,7 @@ import {
   HiOutlineClock,
 } from "react-icons/hi2";
 
+/* ---------------- TOOLS DATA ---------------- */
 const tools = [
   {
     icon: HiOutlinePencilSquare,
@@ -32,6 +33,7 @@ const tools = [
   },
 ];
 
+/* ---------------- TIPS DATA ---------------- */
 const tips = [
   {
     number: "01",
@@ -58,7 +60,6 @@ const tips = [
 export default function WriterZone() {
   const [activeTool, setActiveTool] = useState(null);
 
-  /* AOS INIT */
   useEffect(() => {
     AOS.init({
       duration: 1100,
@@ -75,10 +76,7 @@ export default function WriterZone() {
       <div className="max-w-6xl mx-auto">
 
         {/* HERO */}
-        <section
-          className="text-center mb-16"
-          data-aos="fade-up"
-        >
+        <section className="text-center mb-16" data-aos="fade-up">
           <span className="chip">Writer Sanctuary</span>
 
           <h1 className="mt-5 text-[clamp(32px,5vw,60px)] font-extrabold text-[var(--text)] leading-tight">
@@ -88,30 +86,10 @@ export default function WriterZone() {
           <p className="mt-4 text-[var(--text2)] max-w-2xl mx-auto leading-relaxed">
             Tools, focus systems, and craft principles for serious writers.
           </p>
-
-          {/* MINI STATS */}
-          <div
-            className="flex flex-wrap justify-center gap-3 mt-8"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <div className="glass px-4 py-2 rounded-full text-sm hover:scale-105 transition-all duration-300">
-              🔥 5 Day Streak
-            </div>
-
-            <div className="glass px-4 py-2 rounded-full text-sm hover:scale-105 transition-all duration-300">
-              ✍️ 1,240 Words Today
-            </div>
-
-            <div className="glass px-4 py-2 rounded-full text-sm hover:scale-105 transition-all duration-300">
-              🎯 Focus Mode ON
-            </div>
-          </div>
         </section>
 
         {/* TOOLS */}
         <section className="mb-20">
-
           <h2
             className="text-2xl font-bold mb-6 text-[var(--text)]"
             data-aos="fade-right"
@@ -129,18 +107,10 @@ export default function WriterZone() {
                   data-aos="zoom-in"
                   data-aos-delay={index * 120}
                   onClick={() => setActiveTool(t)}
-                  className="card p-5 cursor-pointer
-                             hover:scale-[1.03]
-                             hover:-translate-y-1
-                             transition-all duration-300
-                             hover:border-white/10"
+                  className="card p-5 cursor-pointer hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300"
                 >
-
-                  <div
-                    className="w-12 h-12 rounded-2xl
-                               bg-gradient-to-br from-violet-500/20 to-navy-500/20
-                               flex items-center justify-center mb-4"
-                  >
+                  {/* ICON (React Icons) */}
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-violet-300" />
                   </div>
 
@@ -148,10 +118,9 @@ export default function WriterZone() {
                     {t.title}
                   </h3>
 
-                  <p className="text-sm text-[var(--text2)] mt-2 leading-relaxed">
+                  <p className="text-sm text-[var(--text2)] mt-2">
                     {t.desc}
                   </p>
-
                 </div>
               );
             })}
@@ -159,38 +128,20 @@ export default function WriterZone() {
         </section>
 
         {/* DAILY PROMPT */}
-        <section
-          className="mb-20"
-          data-aos="fade-up"
-        >
-          <div
-            className="card p-8 border border-[var(--border)]
-                       hover:border-violet-400/20 transition-all duration-500"
-          >
+        <section className="mb-20" data-aos="fade-up">
+          <div className="card p-8">
             <span className="chip mb-4 inline-block">
               Today's Prompt
             </span>
 
-            <h3 className="text-xl md:text-2xl font-semibold text-[var(--text)] leading-relaxed">
+            <h3 className="text-xl md:text-2xl font-semibold text-[var(--text)]">
               “Write a scene where a character discovers a secret but chooses silence.”
             </h3>
-
-            <button
-              className="mt-6 px-6 py-3 rounded-xl
-                         bg-gradient-to-br from-navy-500 to-violet-500
-                         text-white font-semibold
-                         hover:scale-[1.03]
-                         hover:shadow-xl
-                         transition-all duration-300"
-            >
-              Start Writing
-            </button>
           </div>
         </section>
 
         {/* TIPS */}
         <section>
-
           <h2
             className="text-2xl font-bold mb-6 text-[var(--text)]"
             data-aos="fade-right"
@@ -204,9 +155,7 @@ export default function WriterZone() {
                 key={t.number}
                 data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
                 data-aos-delay={index * 120}
-                className="card p-6
-                           hover:-translate-y-1
-                           transition-all duration-300"
+                className="card p-6"
               >
                 <div className="text-3xl font-bold text-[var(--text3)]">
                   {t.number}
@@ -216,34 +165,27 @@ export default function WriterZone() {
                   {t.title}
                 </h3>
 
-                <p className="text-sm text-[var(--text2)] mt-2 leading-relaxed">
+                <p className="text-sm text-[var(--text2)] mt-2">
                   {t.body}
                 </p>
               </div>
             ))}
           </div>
         </section>
-
       </div>
 
       {/* MODAL */}
       {activeTool && (
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm
-                     flex items-center justify-center p-6 z-50"
+          className="fixed inset-0 bg-black/50 flex items-center justify-center p-6 z-50"
           onClick={() => setActiveTool(null)}
         >
           <div
-            data-aos="zoom-in"
-            className="card p-6 max-w-md w-full border border-white/10"
+            className="card p-6 max-w-md w-full"
             onClick={(e) => e.stopPropagation()}
           >
-
-            <div
-              className="w-14 h-14 rounded-2xl
-                         bg-gradient-to-br from-violet-500/20 to-navy-500/20
-                         flex items-center justify-center mb-4"
-            >
+            {/* ICON */}
+            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-4">
               <activeTool.icon className="w-7 h-7 text-violet-300" />
             </div>
 
@@ -251,18 +193,16 @@ export default function WriterZone() {
               {activeTool.title}
             </h3>
 
-            <p className="mt-3 text-[var(--text2)] leading-relaxed">
+            <p className="mt-3 text-[var(--text2)]">
               {activeTool.desc}
             </p>
 
             <button
               onClick={() => setActiveTool(null)}
-              className="mt-6 w-full py-3 rounded-xl glass
-                         hover:bg-white/10 transition-all duration-300"
+              className="mt-6 w-full py-3 rounded-xl glass"
             >
               Close
             </button>
-
           </div>
         </div>
       )}
