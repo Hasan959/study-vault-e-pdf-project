@@ -21,10 +21,10 @@ const NAV_LINKS = [
 ];
 
 const SOCIALS = [
-  { label: "Facebook", icon: FaFacebookF, href: "#" },
-  { label: "Twitter/X", icon: FaTwitter, href: "#" },
-  { label: "YouTube", icon: FaYoutube, href: "#" },
-  { label: "LinkedIn", icon: FaLinkedinIn, href: "#" },
+  { label: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com/hasan1boss" },
+  { label: "Twitter/X", icon: FaTwitter, href: "https://twitter.com" },
+  { label: "YouTube", icon: FaYoutube, href: "https://youtube.com" },
+  { label: "LinkedIn", icon: FaLinkedinIn, href: "https://linkedin.com" },
 ];
 
 /* ---------- COMPONENT ---------- */
@@ -43,6 +43,7 @@ const Footer = () => {
       <div className="max-w-[1160px] mx-auto px-6 relative">
         {/* ---------- TOP GRID ---------- */}
         <div className="grid md:grid-cols-4 gap-12 pb-12 border-b border-[var(--border)]">
+          
           {/* BRAND */}
           <div className="md:col-span-2">
             <h2 className="text-xl font-bold text-[var(--text)]">
@@ -66,6 +67,8 @@ const Footer = () => {
                   <a
                     key={s.label}
                     href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={s.label}
                     className="w-10 h-10 flex items-center justify-center rounded-xl
                                bg-[var(--surface)] border border-[var(--border)]
